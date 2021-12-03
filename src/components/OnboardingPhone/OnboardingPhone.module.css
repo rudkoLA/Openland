@@ -1,0 +1,21 @@
+.wrapper {
+    width: 320px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: pink;
+}
+.title {
+    height: 32px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -0.24px;
+    margin-bottom: 8px;
+}
+
+.subTitle {
+    text-align: center;
+    height: 24px;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
