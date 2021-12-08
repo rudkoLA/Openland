@@ -21,18 +21,3 @@ export class TextInput extends React.Component {
 		return <input className={styles.input} placeholder={placeholder} />;
 	}
 }
-
-/**
- <input list="browsers" name="myBrowser" /></label>
-<datalist id="browsers">
-  <option value="Chrome">
-  <option value="Firefox">
-  <option value="Internet Explorer">
-  <option value="Opera">
-  <option value="Safari">
-  <option value="Microsoft Edge">
-</datalist>
- */
-
-
-git config --global user.name "Rudko Adam" $ git config --global user.email "rudko.adam.1@gmail.com"
