@@ -1,21 +1,44 @@
 .wrapper {
-    width: 320px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: pink;
+	width: 320px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 .title {
-    height: 32px;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    letter-spacing: -0.24px;
-    margin-bottom: 8px;
+	height: 32px;
+	font-size: 24px;
+	font-weight: 700;
+	text-align: center;
+	letter-spacing: -0.24px;
+	margin-bottom: 5px;
 }
 
 .subTitle {
-    text-align: center;
-    height: 24px;
-    font-size: 15px;
-    font-weight: 400;
-    letter-spacing: 0.2px;
+	text-align: center;
+	height: 24px;
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: 0.2px;
+	margin-bottom: 32px;
+	line-height: 24px;
+	color: #71747a;
+}
+
+.countryOptions {
+	margin-bottom: 16px;
+	font-size: 15px;
+}
+
+.countryCode {
+	margin-bottom: 16px;
+	width: 28%;
+	font-size: 15px;
+}
+
+.phoneNumber {
+	margin-bottom: 16px;
+	margin-left: 16px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
 }

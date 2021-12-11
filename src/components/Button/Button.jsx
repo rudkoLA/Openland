@@ -11,12 +11,15 @@ export class Button extends React.Component {
     if (theme === "white") {
       classNames += " " + styles.whiteButton;
     }
+    else if (theme === "black") {
+      classNames += " " + styles.blackButton; 
+    }
     if (className !== undefined ) {
       classNames +=  " " + className;
     }
     
     return (
-      <button className={classNames}>
+      <button className={classNames} >
         {children}
       </button>
     );

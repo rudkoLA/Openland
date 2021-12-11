@@ -4,21 +4,35 @@ import styles from './TextInput.module.css';
 
 export class TextInput extends React.Component {
 	render() {
-		const { placeholder, options } = this.props;
+		const { placeholder, options, readOnly, value, className } = this.props;
+		
 		console.log(this.props);
 		// let b = options.map((option) => React.createElement('div', {}, option.name))
-    
+
 		if (options) {
-      let c = options.map((option) => <option value={option.name} /> );
-      
+			let c = options.map((option) => <option value={option.name} />);
+
 			return (
 				<>
-					<input className={styles.input} placeholder={placeholder} list="countries"/>
+					<input
+						className={styles.input + ' ' + className}
+						placeholder={placeholder}
+						value={value}
+						list="countries"
+					/>
 					<datalist id="countries">{c}</datalist>
 				</>
 			);
 		}
-		return <input className={styles.input} placeholder={placeholder} />;
+
+		return (
+			<input
+				className={styles.input + ' ' + className}
+				placeholder={placeholder}
+				readOnly={readOnly}
+				value={value}
+			/>
+		);
 	}
 }
 
@@ -33,6 +47,3 @@ export class TextInput extends React.Component {
   <option value="Microsoft Edge">
 </datalist>
  */
-
-
-git config --global user.name "Rudko Adam" $ git config --global user.email "rudko.adam.1@gmail.com"

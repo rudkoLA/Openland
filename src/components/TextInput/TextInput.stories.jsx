@@ -8,11 +8,18 @@ storiesOf('TextInput', module).add('default', () => (
 		<TextInput placeholder="Phone number">test </TextInput>
 	</div>
 ));
-storiesOf('TextInput', module).add('drop down', () => {
+
+storiesOf('TextInput', module).add('Read Only', () => (
+	<div style={{ width: 200 }}>
+		<TextInput readOnly={true} value="+380">test </TextInput>
+	</div>
+));
+
+storiesOf('TextInput', module).add('Drop Down', () => {
 	let options = [{ name: "Ukraine", value: "+380" }, { name: "Poland", value: "+48" }, { name: "Germany", value: "+49" } ];
 	return (
 		<div style={{ width: 200 }}>
-			<TextInput options={options}  kakak={12354454}> </TextInput>
+			<TextInput options={options} > </TextInput>
 		</div>
 	);
 });
