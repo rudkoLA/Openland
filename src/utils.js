@@ -1,13 +1,14 @@
 export const numberToWord = function (n) {
-	let tensDigit = Math.floor(n / 10);
 	let firstDigit = n % 10;
+	let tensDigit = Math.floor(n / 10);
+	let hundredsDigit = Math.floor(n / 100);
 
 	if (n === 0) {
 		return 'zero';
 	} else if (tensDigit === 0) {
 		return convertNaturalNumToWord(n);
 	} else if (tensDigit === 1) {
-		return convertTeensNumToWord(n % 10);
+		return convertTeensNumToWord(firstDigit);
 	} else if (tensDigit > 1 && tensDigit < 10) {
 		if (firstDigit === 0) {
 			return convertTensNumToWord(tensDigit);
@@ -17,6 +18,42 @@ export const numberToWord = function (n) {
 				' ' +
 				convertNaturalNumToWord(firstDigit)
 			);
+		}
+	} else if (hundredsDigit > 0) {
+		tensDigit = tensDigit % 10;
+		if (tensDigit === 0) {
+			if (firstDigit === 0) {
+				return convertNaturalNumToWord(hundredsDigit) + ' hundred';
+			} else {
+				return (
+					convertNaturalNumToWord(hundredsDigit) +
+					' hundred ' +
+					convertNaturalNumToWord(firstDigit)
+				);
+			}
+		} else if (tensDigit === 1) {
+			return (
+				convertNaturalNumToWord(hundredsDigit) +
+				' hundred ' +
+				convertTeensNumToWord(firstDigit)
+			);
+		} else {
+			if (firstDigit === 0) {
+				return (
+					convertNaturalNumToWord(hundredsDigit) +
+					' hundred ' +
+					convertTensNumToWord(tensDigit)
+					);
+			} 
+			else {
+				return (
+				convertNaturalNumToWord(hundredsDigit) +
+				' hundred ' +
+				convertTensNumToWord(tensDigit) +
+				' ' + 
+				convertNaturalNumToWord(firstDigit)
+				);
+			}
 		}
 	}
 };
@@ -57,11 +94,11 @@ const convertTensNumToWord = function (n) {
 		'fifty',
 		'',
 		'',
-		'eighty'
+		'eighty',
 	];
-    if (tensNumbers[n]) {
-        return tensNumbers[n];
-    } else {
-        return convertNaturalNumToWord(n) + 'ty';
-    }
+	if (tensNumbers[n]) {
+		return tensNumbers[n];
+	} else {
+		return convertNaturalNumToWord(n) + 'ty';
+	}
 };

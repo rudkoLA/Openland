@@ -35,5 +35,18 @@ describe('numberToWord', () => {
 		expect(numberToWord(30)).toEqual('thirty');
 		expect(numberToWord(52)).toEqual('fifty two');
 		expect(numberToWord(99)).toEqual('ninety nine');
+		expect(numberToWord(90)).toEqual('ninety');
 	});
+	
+	it('should work for 100s', () => {
+		expect(numberToWord(100)).toEqual('one hundred');
+		expect(numberToWord(109)).toEqual('one hundred nine');
+		expect(numberToWord(119)).toEqual('one hundred nineteen');
+		expect(numberToWord(120)).toEqual('one hundred twenty');
+		expect(numberToWord(123)).toEqual('one hundred twenty three');
+		expect(numberToWord(597)).toEqual('five hundred ninety seven');
+		expect(numberToWord(997)).toEqual('nine hundred ninety seven');
+		expect(numberToWord(209)).toEqual('two hundred nine');
+	});
+
 });
