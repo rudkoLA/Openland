@@ -37,7 +37,7 @@ describe('numberToWord', () => {
 		expect(numberToWord(99)).toEqual('ninety nine');
 		expect(numberToWord(90)).toEqual('ninety');
 	});
-	
+
 	it('should work for 100s', () => {
 		expect(numberToWord(100)).toEqual('one hundred');
 		expect(numberToWord(109)).toEqual('one hundred nine');
@@ -49,4 +49,14 @@ describe('numberToWord', () => {
 		expect(numberToWord(209)).toEqual('two hundred nine');
 	});
 
+	it('should work for 1000s', () => {
+		expect(numberToWord(1000)).toEqual('one thousand');
+		expect(numberToWord(2345)).toEqual('two thousand three hundred forty five');
+		expect(numberToWord(999999)).toEqual('nine hundred ninety nine thousand nine hundred ninety nine');
+	});
+	it('should work for millions', () => {
+		expect(numberToWord(1000000)).toEqual('one million');
+		expect(numberToWord(2345678)).toEqual('two million three hundred forty five thousand six hundred seventy eight');
+		expect(numberToWord(999999999)).toEqual('nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine');
+	});
 });
