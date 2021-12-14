@@ -1,53 +1,59 @@
-export const numberToWord = function (n) {
-	let firstDigit = Math.floor(n % 10);
-	let hundreds = n % 1000;
-	let thousands = Math.floor(n / 1000) % 1000;
-	let millions = Math.floor(n / 1000000);
-
-	if (!millions) {
-		if (!thousands) {
-			return convertHundredsToWord(hundreds);
-		} else {
-			if (!firstDigit) {
-				return convertHundredsToWord(thousands) + ' thousand';
-			} else {
-				return (
-					convertHundredsToWord(thousands) +
-					' thousand ' +
-					convertHundredsToWord(hundreds)
-				);
-			}
+export const pop3 = function (a) {
+	let aPoped = [];
+	for (let i = 0; i < 3; i++) {
+		if (!a[0]) {
+			break;
 		}
-	} else {
-		if (!thousands) {
-			if (!firstDigit) {
-				return convertHundredsToWord(millions) + ' million';
-			} else {
-				return (
-					convertHundredsToWord(millions) +
-					' million ' +
-					convertHundredsToWord(hundreds)
-				);
-			}
-		} else {
-			if (!firstDigit) {
-				return (
-					convertHundredsToWord(millions) +
-					' million ' +
-					convertHundredsToWord(thousands) +
-					' thousand'
-				);
-			} else {
-				return (
-					convertHundredsToWord(millions) +
-					' million ' +
-					convertHundredsToWord(thousands) +
-					' thousand ' +
-					convertHundredsToWord(hundreds)
-				);
-			}
-		}
+		aPoped.unshift(a.pop());
 	}
+	return aPoped;
+};
+
+export const splitBy3 = function (s) {
+	let sArray = s.split('');
+	let sFinal = [];
+
+	while (sArray[0]) {
+		sFinal.unshift(Number.parseInt(pop3(sArray).join('')));
+	}
+	return sFinal;
+};
+
+export const numberToWord = function (s) {
+	if (s === '0') {
+		return 'zero';
+	}
+	let scale = [
+		'',
+		' thousand',
+		' million',
+		' billion',
+		' trillion',
+		' quadrillion',
+		' quintillion',
+		' sextillion',
+		' septillion',
+		' octillion',
+	];
+	let sNormal = splitBy3(s).reverse();
+	let l = sNormal.length;
+	let sWord = '';
+	let i = 0;
+
+	while (i < l) {
+		let converted = convertHundredsToWord(sNormal[i]);
+
+		if (!converted) {
+		} else if (converted) {
+			if (!sWord) {
+				sWord = converted + scale[i];
+			} else {
+				sWord = converted + scale[i] + ' ' + sWord;
+			}
+		}
+		i++;
+	}
+	return sWord;
 };
 
 const convertNaturalNumToWord = function (n) {
@@ -101,7 +107,7 @@ const convertHundredsToWord = function (n) {
 	let hundredsDigit = Math.floor(n / 100);
 
 	if (n === 0) {
-		return 'zero';
+		return '';
 	} else if (tensDigit === 0) {
 		return convertNaturalNumToWord(n);
 	} else if (tensDigit === 1) {
