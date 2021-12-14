@@ -34,6 +34,13 @@ export const numberToWord = function (s) {
 		' sextillion',
 		' septillion',
 		' octillion',
+		' nonillion',
+		' decillion',
+		' undecillion',
+		' duodecillion',
+		' tredecillion',
+		' quattuordecillion',
+		' quindecillion',
 	];
 	let sNormal = splitBy3(s).reverse();
 	let l = sNormal.length;
