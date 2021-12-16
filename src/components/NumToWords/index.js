@@ -1,1 +1,1 @@
-export {NumToWords} from './NumToWords'
+export { NumToWords } from "./NumToWords";

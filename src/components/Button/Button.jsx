@@ -10,6 +10,9 @@ export const Button = (props) => {
 	if (theme === 'white') {
 		classNames += ' ' + styles.whiteButton;
 	}
+	if (theme === 'icon') {
+		classNames += ' ' + styles.iconButton;
+	}
 	if (className !== undefined) {
 		classNames += ' ' + className;
 	}
