@@ -80,7 +80,7 @@ const convertNaturalNumToWord = function (n) {
 };
 
 const convertTeensNumToWord = function (n) {
-	const teenNumbers = ['ten', 'eleven', 'twelve', 'thirteen'];
+	const teenNumbers = ['ten', 'eleven', 'twelve', 'thirteen', '', 'fifteen'];
 
 	if (teenNumbers[n]) {
 		return teenNumbers[n];
@@ -110,59 +110,29 @@ const convertTensNumToWord = function (n) {
 
 const convertHundredsToWord = function (n) {
 	let firstDigit = n % 10;
-	let tensDigit = Math.floor(n / 10);
+	let tensDigit = Math.floor(n / 10) % 10;
 	let hundredsDigit = Math.floor(n / 100);
+	let result = '';
 
-	if (n === 0) {
-		return '';
-	} else if (tensDigit === 0) {
-		return convertNaturalNumToWord(n);
-	} else if (tensDigit === 1) {
-		return convertTeensNumToWord(firstDigit);
-	} else if (tensDigit > 1 && tensDigit < 10) {
-		if (firstDigit === 0) {
-			return convertTensNumToWord(tensDigit);
-		} else {
-			return (
-				convertTensNumToWord(tensDigit) +
-				' ' +
-				convertNaturalNumToWord(firstDigit)
-			);
+	if (hundredsDigit) {
+		result += convertNaturalNumToWord(hundredsDigit) + ' hundred';
+	}
+	if (tensDigit) {
+		if (result) {
+			result += ' ';
 		}
-	} else if (hundredsDigit > 0) {
-		tensDigit = tensDigit % 10;
-		if (tensDigit === 0) {
-			if (firstDigit === 0) {
-				return convertNaturalNumToWord(hundredsDigit) + ' hundred';
-			} else {
-				return (
-					convertNaturalNumToWord(hundredsDigit) +
-					' hundred ' +
-					convertNaturalNumToWord(firstDigit)
-				);
-			}
-		} else if (tensDigit === 1) {
-			return (
-				convertNaturalNumToWord(hundredsDigit) +
-				' hundred ' +
-				convertTeensNumToWord(firstDigit)
-			);
+		if (tensDigit < 2) {
+			result += convertTeensNumToWord(firstDigit);
 		} else {
-			if (firstDigit === 0) {
-				return (
-					convertNaturalNumToWord(hundredsDigit) +
-					' hundred ' +
-					convertTensNumToWord(tensDigit)
-				);
-			} else {
-				return (
-					convertNaturalNumToWord(hundredsDigit) +
-					' hundred ' +
-					convertTensNumToWord(tensDigit) +
-					' ' +
-					convertNaturalNumToWord(firstDigit)
-				);
-			}
+			result += convertTensNumToWord(tensDigit);
 		}
 	}
+	if (tensDigit !== 1 && firstDigit) {
+		if (result) {
+			result += ' ';
+		}
+		result += convertNaturalNumToWord(firstDigit);
+	}
+
+	return result;
 };
