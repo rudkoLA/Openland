@@ -1,4 +1,18 @@
-import { numberToWord, splitBy3, pop3 } from './utils';
+import {
+	numberToWord,
+	splitBy3,
+	pop3,
+	primes,
+	max2,
+	max3,
+	max4,
+	maxN,
+	bubleSort,
+	pow,
+	factorial,
+	getFormattedDate,
+	getCapitalizedString,
+} from './utils';
 
 describe('pop3', () => {
 	it('should exist', () => {
@@ -112,6 +126,122 @@ describe('numberToWord', () => {
 	it('should work for any number', () => {
 		expect(numberToWord('12345678901234567890')).toEqual(
 			'twelve quintillion three hundred forty five quadrillion six hundred seventy eight trillion nine hundred one billion two hundred thirty four million five hundred sixty seven thousand eight hundred ninety'
+		);
+	});
+});
+
+describe('prime numbers generator', () => {
+	it('should generate prime numbers up to N', () => {
+		expect(primes(12)).toEqual([2, 3, 5, 7, 11]);
+		expect(primes(123)).toEqual([
+			2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
+			71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113,
+		]);
+	});
+});
+
+describe('max number', () => {
+	it('should have max2 function', () => {
+		expect(max2(10, 20)).toEqual(20);
+	});
+
+	it('should have max3 function', () => {
+		expect(max3(20, 40, 10)).toEqual(40);
+	});
+
+	it('should have max4 function', () => {
+		expect(max4(20, 40, 10, 30)).toEqual(40);
+	});
+
+	it('should have maxN function', () => {
+		expect(
+			maxN(
+				20,
+				40,
+				10,
+				30,
+				2,
+				3,
+				5,
+				7,
+				11,
+				13,
+				17,
+				19,
+				23,
+				29,
+				31,
+				37,
+				41,
+				43,
+				47,
+				53,
+				59,
+				61,
+				67,
+				71,
+				73,
+				79,
+				83,
+				89,
+				97,
+				101,
+				103,
+				107,
+				109,
+				113
+			)
+		).toEqual(113);
+	});
+});
+
+describe('buble sort', () => {
+	it('should sort an array of numbers', () => {
+		expect(
+			bubleSort([
+				1, 5, 6, 89, 75, 4, 56, 6, 5, 6, 6, 5, 6, 6, 5, 32, 3, 6, 53, 23, 45,
+				16, 3, 4, 56, 12, 3, 42, 34, 5, 6, 34, 56, 3, 7, 45, 63, 3, 54, 36, 4,
+				53, 65, 3, 56, 3, 79, 8, 65, 16, 31, 26, 78,
+			])
+		).toEqual([
+			1, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 7,
+			8, 12, 16, 16, 23, 26, 31, 32, 34, 34, 36, 42, 45, 45, 53, 53, 54, 56, 56,
+			56, 56, 63, 65, 65, 75, 78, 79, 89,
+		]);
+	});
+});
+
+describe('pow', () => {
+	it('should exist', () => {
+		expect(pow).toBeDefined();
+	});
+	it('should return power of number', () => {
+		expect(pow(2, 4)).toEqual(16);
+		expect(pow(4, 3)).toEqual(64);
+	});
+});
+
+describe('factorial', () => {
+	it('should exist', () => {
+		expect(factorial).toBeDefined();
+	});
+	it('should return factorial', () => {
+		expect(factorial(1)).toEqual(1);
+		expect(factorial(3)).toEqual(6);
+		expect(factorial(5)).toEqual(120);
+	});
+});
+
+xdescribe('getFormattedDate', () => {
+	it('should return current date', () => {
+		expect(getFormattedDate()).toEqual('2022:01:09 00+12');
+	});
+});
+
+describe('getCapitalizedString', () => {
+	it('should return current date', () => {
+		expect(getCapitalizedString('Hello darkness my old    friend!')).toEqual(
+			'Hello Darkness My Old    Friend!'
 		);
 	});
 });
