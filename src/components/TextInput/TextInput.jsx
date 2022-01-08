@@ -5,7 +5,6 @@ import styles from './TextInput.module.css';
 export class TextInput extends React.Component {
 	render() {
 		const { placeholder, options } = this.props;
-		console.log(this.props);
 		// let b = options.map((option) => React.createElement('div', {}, option.name))
     
 		if (options) {
